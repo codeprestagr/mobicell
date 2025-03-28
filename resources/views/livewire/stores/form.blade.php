@@ -35,152 +35,77 @@
 
                <form wire:submit.prevent="save" class="mt-5">
                     <div class="grid lg:grid-cols-2 gap-6">
-                                    <div>
-                                        <x-input-label for="name" :value="__('Name')" required="true">
-
-                                        </x-input-label>
-                                        <x-text-input wire:model="name" id="name" placeholder="{{__('Name')}}"
-                                                            type="text" class="mt-1 block w-full" />
-                                        @error('name')
-                                            <span class="text-red-500 text-xs font-medium mt-5">
-                                                {{ $message }}
-                                            </span>
-                                        @enderror
-                                    </div>
-
                         <div>
-                            <x-input-label for="company" :value="__('Company')" required="true">
-
-                            </x-input-label>
-                            <x-text-input wire:model="company" id="company" placeholder="{{__('Company')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('company')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                                                {{ $message }}
-                                            </span>
-                            @enderror
+                            <x-input-label for="name" :value="__('Name')" required="true"></x-input-label>
+                            <x-text-input wire:model="name" id="name" placeholder="{{__('Name')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('name')" />
                         </div>
 
                         <div>
-                            <x-input-label for="company" :value="__('Business Activity')" required="true">
-
-                            </x-input-label>
-                            <x-text-input wire:model="business_activity" id="business_activity" placeholder="{{__('Business Activity')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('business_activity')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                                                {{ $message }}
-                                            </span>
-                            @enderror
+                            <x-input-label for="company" :value="__('Company')" required="true"></x-input-label>
+                            <x-text-input wire:model="company" id="company" placeholder="{{__('Company')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('company')" />
                         </div>
 
                         <div>
-                            <x-input-label for="company" :value="__('Vat number')" required="true">
+                            <x-input-label for="company" :value="__('Business Activity')" required="true"></x-input-label>
+                            <x-text-input wire:model="business_activity" id="business_activity" placeholder="{{__('Business Activity')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('business_activity')" />
+                        </div>
 
-                            </x-input-label>
-                            <x-text-input wire:model="vat_number" id="vat_number" placeholder="{{__('Vat number')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('vat_number')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                                                {{ $message }}
-                                            </span>
-                            @enderror
+                        <div>
+                            <x-input-label for="company" :value="__('Vat number')" required="true"></x-input-label>
+                            <x-text-input wire:model="vat_number" id="vat_number" placeholder="{{__('Vat number')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('vat_number')" />
                         </div>
 
                         <div>
                             <x-input-label for="address" :value="__('Address')" required="true"></x-input-label>
-                            <x-text-input wire:model="address" id="address" placeholder="{{__('Address')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('address')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                            {{ $message }}
-                        </span>
-                            @enderror
+                            <x-text-input wire:model="address" id="address" placeholder="{{__('Address')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('address')" />
                         </div>
-
 
                         <div>
                             <x-input-label for="postcode" :value="__('Post Code')" required="true"></x-input-label>
-                            <x-text-input wire:model="postcode" id="postcode" placeholder="{{__('Post Code')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('postcode')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                            {{ $message }}
-                        </span>
-                            @enderror
+                            <x-text-input wire:model="postcode" id="postcode" placeholder="{{__('Post Code')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('postcode')" />
                         </div>
 
                         <div>
-                            <x-input-label for="postcode" :value="__('City')" required="true"></x-input-label>
-                            <x-text-input wire:model="city" id="city" placeholder="{{__('City')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('city')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                            {{ $message }}
-                        </span>
-                            @enderror
+                            <x-input-label for="city" :value="__('City')" required="true"></x-input-label>
+                            <x-text-input wire:model="city" id="city" placeholder="{{__('City')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('city')" />
                         </div>
 
                         <div>
-                            <x-input-label for="postcode" :value="__('Doi')" required="true"></x-input-label>
-                            <x-text-input wire:model="doi" id="doi" placeholder="{{__('Doi')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('doi')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                            {{ $message }}
-                        </span>
-                            @enderror
+                            <x-input-label for="Doi" :value="__('Doi')" required="true"></x-input-label>
+                            <x-text-input wire:model="doi" id="doi" placeholder="{{__('Doi')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('doi')" />
                         </div>
 
                         <div>
                             <x-input-label for="postcode" :value="__('Gemi')" required="true"></x-input-label>
-                            <x-text-input wire:model="gemi_number" id="gemi_number" placeholder="{{__('Gemi')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('gemi_number')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                            {{ $message }}
-                        </span>
-                            @enderror
+                            <x-text-input wire:model="gemi_number" id="gemi_number" placeholder="{{__('Gemi')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('gemi_number')" />
                         </div>
 
                         <div>
                             <x-input-label for="phone" :value="__('Phone')" required="true"></x-input-label>
-                            <x-text-input wire:model="phone" id="phone" placeholder="{{__('Phone')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('phone')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                            {{ $message }}
-                        </span>
-                            @enderror
+                            <x-text-input wire:model="phone" id="phone" placeholder="{{__('Phone')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('phone')" />
                         </div>
+
                         <div>
-                        <x-input-label for="email" :value="__('Email')" required="true"></x-input-label>
-                        <x-text-input wire:model="email" id="email" placeholder="{{__('Email')}}"
-                                            type="text" class="mt-1 block w-full" />
-                        @error('email')
-                        <span class="text-red-500 text-xs font-medium mt-5">
-                            {{ $message }}
-                        </span>
-                        @enderror
-                    </div>
+                            <x-input-label for="email" :value="__('Email')" required="true"></x-input-label>
+                            <x-text-input wire:model="email" id="email" placeholder="{{__('Email')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('email')" />
+                        </div>
 
                         <div>
                             <x-input-label for="website" :value="__('Website')"></x-input-label>
-                            <x-text-input wire:model="website" id="website" placeholder="{{__('Website')}}"
-                                                type="text" class="mt-1 block w-full" />
-                            @error('website')
-                            <span class="text-red-500 text-xs font-medium mt-5">
-                                {{ $message }}
-                            </span>
-                            @enderror
+                            <x-text-input wire:model="website" id="website" placeholder="{{__('Website')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium " :messages="$errors->get('website')" />
                         </div>
-
-
-
-
-
-
-
                 </div>
 
                 <div class="grid lg:grid-cols-1 gap-6 mt-5">

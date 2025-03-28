@@ -27,32 +27,25 @@
 
                 @include('livewire._partials.messages.success')
                 @include('livewire._partials.messages.error')
+
                 <form wire:submit.prevent="save" class="mt-5">
                     <div class="grid lg:grid-cols-2 gap-6">
                         <div>
                             <x-input-label for="name" :value="__('Name')" required="true"></x-input-label>
                             <x-text-input wire:model="name" id="name" placeholder="{{__('Name')}}" type="text" class="mt-1 block w-full" />
-                            @error('name')
-                                <span class="text-red-500 text-xs font-medium mt-5">
-                                    {{ $message }}
-                                </span><!-- text-red-500 text-xs font-medium mt-5-->
-                            @enderror
+                            <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('name')" />
                         </div><!-- div-->
 
                         <div>
                             <x-input-label for="email" :value="__('Email')" required="true"></x-input-label>
                             <x-text-input wire:model="email" id="email" placeholder="{{__('Email')}}" type="text" class="mt-1 block w-full" />
-                            @error('email')
-                                <span class="text-red-500 text-xs font-medium mt-5">{{ $message }}</span>
-                            @enderror
+                            <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('email')" />
                         </div><!-- div-->
 
                         <div>
                             <x-input-label for="password" :value="__('Password')" required="true"></x-input-label>
                             <x-text-input wire:model="password" type="password" id="password" placeholder="{{__('Password')}}" type="text" class="mt-1 block w-full" />
-                                @error('password')
-                                    <span class="text-red-500 text-xs font-medium mt-5">{{ $message }}</span>
-                                @enderror
+                            <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('password')" />
                         </div><!-- div-->
 
                         <div>
@@ -63,23 +56,20 @@
                                     <option value="{{ $role->id }}" {{ $role->id == $id_role ? 'selected' : '' }}>{{ $role->name }}</option>
                                 @endforeach
                             </select>
-                            @error('id_role') <span class="text-red-500 text-xs font-medium mt-5">{{ $message }}</span> @enderror
+                            <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('id_role')" />
                         </div><!-- div-->
 
                         @if(!$disableStore)
                         <div>
-                            <x-input-label for="store_id" :value="__('Assignment to Store')"
-                                                 note="true"></x-input-label>
-                            <select wire:model="store_id" class="form-select" id="store">
-                                <option selected=""  value="0">{{ __('All stores') }}</option>
-                                @foreach($stores as $store)
-                                    <option value="{{ $store->id }}" {{ $store->id == $store_id ? 'selected' : '' }}>
-                                        {{ $store->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('store_id') <span class="text-red-500">{{ $message }}</span> @enderror
-
+                            <x-input-label for="store_id" :value="__('Assignment to Store')" note="true"></x-input-label>
+                            <x-select-box
+                                name="store_id"
+                                label="{{ __('Assignment to Store') }}"
+                                :options="$stores"
+                                :selectedValue="$store_id"
+                                placeholder="{{ __('All stores') }}"
+                            />
+                            <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('store_id')" />
                             @if(!count($stores))
 
                                  <div class="mt-5 flex gap-3">
@@ -114,9 +104,9 @@
                             @if($user->isSuperAdmin() || $user->can('employees.index'))
                                 @include('livewire._partials.back-to-list',['url'=> route('employees.index')])
                             @endif
-                        </div>
-                    </div>
-                </form>
+                        </div><!-- flex  justify-start items-center gap-2-->
+                    </div><!-- grid lg:grid-cols-1 gap-6 mt-5-->
+                </form><!-- form-->
 
             </div>
         </div>

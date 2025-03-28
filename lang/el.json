@@ -50,5 +50,14 @@
     "Total Users": "Σύνολο χρηστών",
     "Edit Store": "Επεξεργασία καταστήματος",
     "Permissions updated successfully": "Τα δικαιώματα ενημερώθηκαν επιτυχώς.",
-    "Permissions": "Δικαιώματα"
+    "Permissions": "Δικαιώματα",
+    "Dont have an account ?": "Δεν έχετε λογαριασμό;",
+    "Sign up": "Δημιουργία λογαριασμού",
+    "Confirm Password": "Επιβεβαίωση κωδικού",
+    "Register": "Εγγραφή",
+    "Already registered?": "Είστε ήδη χρήστης;",
+    "Forgot your password?": "Ξεχάσατε τον κωδικό;",
+    "Email Password Reset Link": "Αποστολή κωδικού",
+    "Log in": "Σύνδεση",
+    "Complete management for your eShop.": "Ολοκληρωμένη διαχείριση για το eShop σας."
 }

@@ -7,24 +7,74 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!-- Tabler Icons CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
         <!-- Scripts -->
-        @vite(['resources/css/new/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/front/css/tailwind.css'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
+    <body>
+
+
+    <section class="bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="flex items-center justify-center px-4 py-7 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24">
+                <div class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
+
+
+                    <a href="{{route('login')}}">
+                        <img style="height: 50px;"  src="{{ asset('images/logo.png') }}" alt="Logo">
+                    </a>
+
+
+
+
+
+                    {{ $slot }}
+
+
+
+
+                </div>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
+            <div
+                class="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-cover bg-center sm:px-6 lg:h-screen lg:px-8 bg-[url('../images/bg.png')]">
+                <div class="absolute inset-0 bg-gradient-to-t from-sky-900 to-transparent"></div>
+
+                <div class="relative">
+                    <div class="w-full max-w-xl xl:w-full xl:mx-auto xl: pe-24 xl:max-w-xl">
+                        <h3 class="text-4xl font-bold text-white">
+                            {{ __('Complete management for your eShop.') }}
+                        </h3>
+{{--                        <ul class="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-x-8 gap-y-4">--}}
+{{--                            <li class="flex items-center space-x-3">--}}
+{{--                                <i class="ti ti-circle-check-filled text-2xl text-sky-500"></i>--}}
+{{--                                <span class="text-lg font-medium text-white"> Commercial License </span>--}}
+{{--                            </li>--}}
+{{--                            <li class="flex items-center space-x-3">--}}
+{{--                                <i class="ti ti-circle-check-filled text-2xl text-sky-500"></i>--}}
+{{--                                <span class="text-lg font-medium text-white"> Unlimited Exports </span>--}}
+{{--                            </li>--}}
+{{--                            <li class="flex items-center space-x-3">--}}
+{{--                                <i class="ti ti-circle-check-filled text-2xl text-sky-500"></i>--}}
+{{--                                <span class="text-lg font-medium text-white"> 120+ Coded Blocks </span>--}}
+{{--                            </li>--}}
+{{--                            <li class="flex items-center space-x-3">--}}
+{{--                                <i class="ti ti-circle-check-filled text-2xl text-sky-500"></i>--}}
+{{--                                <span class="text-lg font-medium text-white"> Design Files Included </span>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+
+
     </body>
+
+    @vite(['resources/js/front/js/preline.js'])
+
 </html>

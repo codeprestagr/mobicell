@@ -14,12 +14,6 @@ class Index extends BaseComponent
     protected $updatesQueryString = ['search'];
     use WithPagination, WithoutUrlPagination;
 
-    protected array $permissions = [
-        'render' => 'stores.index',
-        'save'   => 'stores.create',
-        'delete' => 'stores.delete',
-    ];
-
 
     public $search;
     public function updatedSearch()
