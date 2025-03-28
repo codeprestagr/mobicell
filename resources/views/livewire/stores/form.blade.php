@@ -109,8 +109,6 @@
                 </div>
 
                 <div class="grid lg:grid-cols-1 gap-6 mt-5">
-
-
                     <div class="flex  justify-start items-center gap-2">
                         <button type="submit" class="btn rounded-full  bg-primary text-white gap-3">
                             <i class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Save</i>

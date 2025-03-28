@@ -52,7 +52,7 @@ class Index extends BaseComponent
             abort(403, __('You do not have permission for this action.'));
         }
 
-        LivewireAlert::title(__('Are you sure you want to delete this store?'))
+        LivewireAlert::title(__('Are you sure?'))
             ->withConfirmButton(__('Yes, delete it!'))
             ->withCancelButton(__('No, Cancel'))
             ->onConfirm('deleteData', ['id' => $id])
@@ -64,8 +64,8 @@ class Index extends BaseComponent
         $store= Store::findOrFail($id['id']);
         $store->delete();
 
-        LivewireAlert::title(__('User Deleted!'))
-            ->text(__('Store has successfully deleted!'))
+        LivewireAlert::title(__('Deleted'))
+            ->text(__('The deletion was successful!'))
             ->success()
             ->timer(2000) // Dismisses after 3 seconds
             ->show();

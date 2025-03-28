@@ -62,9 +62,20 @@ class Form extends BaseComponent
     public function mount($employee = null)
     {
 
-        $this->roles           = Role::all();
+        $user = auth()->user(); // Παίρνεις τον συνδεδεμένο χρήστη
+
+        if ($user->hasRole('super-admin')) {
+
+            $this->roles = Role::all();
+        } else {
+
+            $this->roles = Role::where('name', '!=', 'super-admin')->get();
+        }
+
+
         $this->stores          = Store::all();
         $this->id_current_user = auth()->id();
+
         if ($employee) {
             $employee          = User::findOrFail($employee);
             $this->object      = $employee;
