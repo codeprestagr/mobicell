@@ -113,10 +113,13 @@
             </footer>
         </div>
     </div>
-
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    @vite(['resources/js/new/jquery.min.js', 'resources/js/new/preline.js', 'resources/js/new/simplebar.min.js','resources/js/new/iconify-icon.min.js','resources/js/new/waves.min.js', 'resources/js/new/app.js'])
+    @vite(['resources/js/new/jquery.min.js', 'resources/js/new/preline.js', 'resources/js/new/simplebar.min.js',
+'resources/js/new/iconify-icon.min.js','resources/js/new/waves.min.js', 'resources/js/new/app.js'])
     @livewireScripts
+    @stack('scripts')
+
 
     </body>
 </html>

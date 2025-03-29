@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $query;
     }
 
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
+    }
+
 
 
 }

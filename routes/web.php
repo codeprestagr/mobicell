@@ -36,6 +36,24 @@ Route::middleware('auth')->group(function () {
         Route::get('permissions/create',\App\Livewire\Team\Permissions\Form::class)->name('permissions.create');
         Route::get('permissions/{permission}/edit',\App\Livewire\Team\Permissions\Form::class)->name('permissions.edit');
 
+        Route::get('guarantees/index', App\Livewire\Guarantees\Index::class)->name('guarantees.index');
+        Route::get('guarantees/create', App\Livewire\Guarantees\Form::class)->name('guarantees.create');
+        Route::get('guarantees/{guarantee}/edit', App\Livewire\Guarantees\Form::class)->name('guarantees.edit');
+
+        Route::get('warehouse/index',\App\Livewire\Guarantees\Warehouse\Index::class)->name('guarantees.warehouse.index');
+        Route::get('warehouse/create',\App\Livewire\Guarantees\Warehouse\Form::class)->name('guarantees.warehouse.create');
+        Route::get('warehouse/{warehouse}/edit',\App\Livewire\Guarantees\Warehouse\Form::class)->name('guarantees.warehouse.edit');
+
+
+        Route::get('customers/index',\App\Livewire\Customers\Index::class)->name('customers.index');
+        Route::get('customers/create',\App\Livewire\Customers\Form::class)->name('customers.create');
+        Route::get('customers/{customer}/edit',\App\Livewire\Customers\Form::class)->name('customers.edit');
+
+
+        Route::get('catalog/products',\App\Livewire\Data\Catalog\ProductList::class)->name('products.index');
+        Route::get('catalog/categories', \App\Livewire\Data\Catalog\CategoryList::class)->name('categories.index');
+
+        Route::get('sync',\App\Livewire\Sync::class)->name('sync');
 
     });
 });

@@ -59,5 +59,18 @@
     "Forgot your password?": "Ξεχάσατε τον κωδικό;",
     "Email Password Reset Link": "Αποστολή κωδικού",
     "Log in": "Σύνδεση",
-    "Complete management for your eShop.": "Ολοκληρωμένη διαχείριση για το eShop σας."
+    "Complete management for your eShop.": "Ολοκληρωμένη διαχείριση για το eShop σας.",
+    "Customers": "Πελάτες",
+    "Firstname": "Όνομα",
+    "Lastname": "Επώνυμο",
+    "Postcode": "Τ.Κ",
+    "Created at": "Δημιουργήθηκε",
+    "Updated at" : "Ενημερώθηκε",
+    "User": "Χρήστης",
+    "Edit Customer": "Επεξεργασία πελάτη",
+    "Guarantees": "Εγγυήσεις",
+    "Warehouse": "Αποθήκη",
+    "Orders": "Παραγγελίες",
+    "Today": "Σήμερα",
+    "Products": "Προϊόντα"
 }
