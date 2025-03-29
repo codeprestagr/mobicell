@@ -41,6 +41,37 @@
             @endif
 
 
+            @if($user->isSuperAdmin() || $user->can('erps.index'))
+                <li class="hs-accordion menu-item">
+                    <a href="javascript:void(0)"
+                       class="hs-accordion-toggle group flex items-center gap-x-3.5 rounded-e-full px-4 py-2 text-sm font-medium
+                                text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100
+                            @if(request()->routeIs('erps.create', 'erps.index','erps.edit'))
+                            active @endif">
+                        <i
+                            class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Cycle</i>
+                        <span class="menu-text"> {{ __('Pylon') }} </span>
+                        <span
+                            class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></span>
+                    </a>
+
+                    <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+                        <ul class="mt-2 space-y-2">
+                            @if($user->isSuperAdmin() || $user->can('erps.index'))
+                                <li class="menu-item">
+                                    <x-dropdown-link :href="route('erps.index')"
+                                                     :active="request()->routeIs('erps.index')">
+                                        <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                                        <span class="menu-text">{{ __('Erps') }}</span>
+                                    </x-dropdown-link>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                </li>
+            @endif
+
+
             @if($user->isSuperAdmin() || $user->can('products.index') || $user->can('categories.index'))
                 <li class="hs-accordion menu-item">
                     <a href="javascript:void(0)"
@@ -49,7 +80,7 @@
                             @if(request()->routeIs('categories.index', 'products.index'))
                             active @endif">
                         <i
-                            class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Apps</i>
+                            class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Stacks</i>
                         <span class="menu-text"> {{ __('Shop Data') }} </span>
                         <span
                             class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></span>
@@ -136,7 +167,7 @@
 
 
 
-            @if($user->isSuperAdmin() || $user->can('guarantees.stocks.index') || $user->can('guarantees.index'))
+            @if($user->isSuperAdmin() || $user->can('guarantees.warehouse.index') || $user->can('guarantees.index'))
                 <li class="hs-accordion menu-item">
                     <a href="javascript:void(0)"
                        class="hs-accordion-toggle group flex items-center gap-x-3.5 rounded-e-full px-4 py-2 text-sm font-medium

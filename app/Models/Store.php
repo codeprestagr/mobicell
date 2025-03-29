@@ -24,4 +24,10 @@ class Store extends Model
     {
         return $this->hasMany(User::class);
     }
+
+
+    public function warehouses()
+    {
+        return $this->hasMany(Warehouse::class);
+    }
 }

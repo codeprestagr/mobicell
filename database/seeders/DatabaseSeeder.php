@@ -15,22 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        $this->call([
 
-      /**  User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]); **/
-
-        $routes = collect(Route::getRoutes())->map(function ($route) {
-            return $route->getName();
-        })->filter(function ($name) {
-            return $name;
-        })->values();
-
-
-        foreach ($routes as $route) {
-            Permission::firstOrCreate(['name' => $route, 'guard_name' => 'web']);
-        }
+            WarehouseSeeder::class,
+        ]);
     }
 }

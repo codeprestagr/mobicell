@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.10.1",
         "laraveldaily/laravel-charts": "^0.2.3",
         "livewire/livewire": "^3.6",
+        "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-permission": "^6.16"
     },
     "require-dev": {

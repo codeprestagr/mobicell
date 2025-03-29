@@ -53,7 +53,13 @@ Route::middleware('auth')->group(function () {
         Route::get('catalog/products',\App\Livewire\Data\Catalog\ProductList::class)->name('products.index');
         Route::get('catalog/categories', \App\Livewire\Data\Catalog\CategoryList::class)->name('categories.index');
 
-        Route::get('sync',\App\Livewire\Sync::class)->name('sync');
+//        Route::get('sync',\App\Livewire\Sync::class)->name('sync');
+
+
+        Route::get('erps/index',\App\Livewire\Pylon\Erps\Index::class)->name('erps.index');
+        Route::get('erps/create',\App\Livewire\Pylon\Erps\Form::class)->name('erps.create');
+        Route::get('erps/{erp}/edit',\App\Livewire\Pylon\Erps\Form::class)->name('erps.edit');
+
 
     });
 });

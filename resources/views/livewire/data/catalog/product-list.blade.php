@@ -12,11 +12,34 @@
 
         @if($user->isSuperAdmin() || $user->can('products.sync'))
             <div>
-               aa
+
+
+
+
+                <button wire:click="sync" type="button"
+                        class="py-2 px-5 inline-flex items-center justify-center font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-primary/5 hover:bg-primary border-primary/10 hover:border-primary text-primary hover:text-white rounded-full cursor-pointer gap-3"
+                        wire:loading.class="cursor-default"
+                        wire:loading.attr="disabled"
+                        :disabled="$disabled">
+
+                    <div wire:loading class="animate-spin w-5 h-5 border-[3px] border-current border-t-transparent rounded-full" role="status" aria-label="loading">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+
+                    <span wire:loading.remove>Sync</span>
+                    <span wire:loading>Loading...</span>
+                </button>
+
+                @if ($success)
+                    <p class="text-green-500 mt-2">Η διαδικασία ολοκληρώθηκε με επιτυχία!</p>
+                @endif
+
             </div>
         @endif
     </div> <!-- flex items-center justify-between flex-wrap gap-2 mb-6-->
     <div class="card overflow-hidden p-6">
+
+
         @if($count)
             <div class="flex mb-5">
                 @include('livewire._partials.search')
@@ -36,5 +59,6 @@
                 </div>
             @endif
     </div>
+
 
 </div>

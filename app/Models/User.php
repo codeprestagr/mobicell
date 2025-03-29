@@ -64,10 +64,12 @@ class User extends Authenticatable
 
     public function filterByStore(Builder $query)
     {
-        if ($this->store_id) {
+        /**  if ($this->store_id) {
             return $query->where('store_id', $this->store_id);
         }
-        return $query;
+        return $query; **/
+        return $this->store_id ? $query->where('store_id', $this->store_id) : $query;
+
     }
 
     public function customers()

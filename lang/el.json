@@ -72,5 +72,11 @@
     "Warehouse": "Αποθήκη",
     "Orders": "Παραγγελίες",
     "Today": "Σήμερα",
-    "Products": "Προϊόντα"
+    "Products": "Προϊόντα",
+    "Shop Data": "Eshop Δεδομένα",
+    "Categories": "Κατηγορίες",
+    "Warehouses": "Αποθήκη",
+    "Quantity" : "Ποσότητα",
+    "Price": "Τιμή",
+    "Profit": "Ποσοστό"
 }

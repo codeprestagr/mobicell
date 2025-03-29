@@ -44,7 +44,7 @@
                         @else
                             @include('livewire.guarantees._partials.exist_order')
                         @endif
-                    @include('livewire._partials.save',['id'=> $id])
+                         @include('livewire._partials.save',['id'=> $id])
 
 
                 </form>
@@ -54,3 +54,10 @@
 
 </div>
 </div>
+<script>
+    document.addEventListener('livewire:load', function () {
+        Livewire.on('focusSearchInput', () => {
+            document.getElementById('searchProduct').focus();
+        });
+    });
+</script>

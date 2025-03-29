@@ -118,6 +118,15 @@
     @vite(['resources/js/new/jquery.min.js', 'resources/js/new/preline.js', 'resources/js/new/simplebar.min.js',
 'resources/js/new/iconify-icon.min.js','resources/js/new/waves.min.js', 'resources/js/new/app.js'])
     @livewireScripts
+
+
+    <script>
+        window.Echo.channel('sync-channel')
+            .listen('.queue-finished', () => {
+                Livewire.emit('queue-finished');
+            });
+    </script>
+
     @stack('scripts')
 
 

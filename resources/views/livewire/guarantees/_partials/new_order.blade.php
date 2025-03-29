@@ -5,57 +5,81 @@
             <h4 class="card-title">
                 {{ __('Customer Detail') }}
             </h4>
-{{--            <a href="javascript:void(0);" class="btn btn-sm bg-light !text-sm text-gray-800">Export <i class="ti ti-download ms-1.5"></i></a>--}}
-        </div>
+       </div>
 
-        <div class="p-5">
-            <div class="grid lg:grid-cols-2 gap-6 mt-5">
-                <div>
-                    <x-input-label for="firstname" :value="__('Firstname')" required="true"></x-input-label>
-                    <x-text-input wire:model="firstname" id="firstname" placeholder="{{__('Firstname')}}" type="text" class="mt-1 block w-full" />
-                    <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('firstname')" />
-                </div><!-- div-->
-                <div>
-                    <x-input-label for="lastname" :value="__('Lastname')" required="true"></x-input-label>
-                    <x-text-input wire:model="lastname" id="lastname" placeholder="{{__('Lastname')}}" type="text" class="mt-1 block w-full" />
-                    <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('lastname')" />
-                </div><!-- div-->
-
-                <div>
-                    <x-input-label for="email" :value="__('Email')" required="true"></x-input-label>
-                    <x-text-input wire:model="email" id="email" placeholder="{{__('Email')}}" type="text" class="mt-1 block w-full" />
-                    <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('email')" />
-                </div><!-- div-->
-
-                <div>
-                    <x-input-label for="address" :value="__('Address')" required="true"></x-input-label>
-                    <x-text-input wire:model="address" id="address" placeholder="{{__('Address')}}" type="text" class="mt-1 block w-full" />
-                    <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('address')" />
-                </div><!-- div-->
-
-                <div>
-                    <x-input-label for="city" :value="__('City')" required="true"></x-input-label>
-                    <x-text-input wire:model="city" id="city" placeholder="{{__('City')}}" type="text" class="mt-1 block w-full" />
-                    <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('city')" />
-                </div><!-- div-->
-
-                <div>
-                    <x-input-label for="postcode" :value="__('Postcode')" required="true"></x-input-label>
-                    <x-text-input wire:model="postcode" id="postcode" placeholder="{{__('Postcode')}}" type="text" class="mt-1 block w-full" />
-                    <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('postcode')" />
-                </div><!-- div-->
-
-                <div>
-                    <x-input-label for="phone" :value="__('Phone')" required="true"></x-input-label>
-                    <x-text-input wire:model="phone" id="phone" placeholder="{{__('Phone')}}" type="text" class="mt-1 block w-full" />
-                    <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('phone')" />
-                </div><!-- div-->
-            </div>
-        </div>
-    </div>
+        @include('livewire.guarantees._partials.fields-customers')
+    </div><!--- card-->
 
     <div class="card">
-        aaa
-    </div>
+
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">
+                    {{ __('Select Products') }}
+                </h4>
+            </div>
+
+
+        <div class="p-5">
+
+            @include('livewire.guarantees._partials.search')
+
+            @if(count($products))
+
+
+                <div class="grid lg:grid-cols-1 gap-6 mt-5">
+                    <div>
+
+                        <x-input-label for="product" :value="__('Product')" required="true"></x-input-label>
+                        <select    wire:model.lazy="selectedProductId" class="form-select">
+                            <option value="">Επιλέξτε προϊόν</option>
+                            @foreach($products as $product)
+                                <option value="{{ $product->id }}">
+                                    {{ $product->name }} (Κωδικός: {{ $product->code }})
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+
+                @if($selectedProductId)
+                    <div class="grid lg:grid-cols-2 gap-6 mt-5">
+                        <div>
+                            <x-input-label for="unitPrice" :value="__('Unit Price')" required="true"></x-input-label>
+                            <x-text-input wire:model="unitPrice" id="unitPrice" placeholder="{{__('unitPrice')}}" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('unitPrice')" />
+                        </div><!-- div-->
+
+                        <div>
+                            <x-input-label for="codeimei" :value="__('Code IMEI')" required="true"></x-input-label>
+                            <x-text-input wire:model="imei" id="imei" placeholder="{{__('imei')}}" type="text" class="mt-1 block w-full" />
+                        </div>
+                    </div>
+                @endif
+
+
+
+
+            <!-- Κουμπί Προσθήκης -->
+            <a href="javascript:void(0);" wire:click="addProductToList" class="text-blue-500 cursor-pointer">
+                ➕ Προσθήκη στην λίστα
+            </a>
+
+
+
+
+            @endif
+
+
+
+
+            </div>
+        </div>
 <div>
 
+@if($selectedProducts)
+    @include('livewire.guarantees._partials.selected')
+@endif

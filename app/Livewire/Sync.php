@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Jobs\SyncProductsBatchDispatcherJob;
 use App\Jobs\SyncProductsJob;
 use Illuminate\Support\Facades\Http;
 use Livewire\Component;
@@ -47,8 +48,8 @@ class Sync extends Component
         $this->progress = 0;
 
         // Dispatch the sync job to the queue
-        SyncProductsJob::dispatch($this->page, $this->limit, $this->totalProducts);
-
+        //SyncProductsJob::dispatch($this->page, $this->limit, $this->totalProducts);
+        SyncProductsBatchDispatcherJob::dispatch($this->page, $this->limit, $this->totalProducts);
         // Notify the frontend that the sync has started
         $this->dispatch('sync-start');
     }
