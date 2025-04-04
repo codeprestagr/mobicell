@@ -27,13 +27,6 @@ class ProductJob implements ShouldQueue
      */
     public function handle(): void
     {
-        // Βρίσκουμε τα προϊόντα που χρειάζονται ενημέρωση
-        $productsToUpdate = collect($this->products)->filter(function ($p) {
-            $product = Product::where('id_prestashop', $p['id'])->first();
-            return $product && $this->hasChanges($product, $p);
-        });
-        $productIdsInNewList = collect($this->products)->pluck('id')->toArray();
-        $productsToDelete = Product::whereNotIn('id_prestashop', $productIdsInNewList)->get();
 
 
         foreach ($this->products as $p) {
@@ -53,10 +46,7 @@ class ProductJob implements ShouldQueue
             );
         }
 
-        // Διαγραφή των προϊόντων που δεν υπάρχουν στη νέα λίστα
-        foreach ($productsToDelete as $product) {
-            $product->delete();
-        }
+
 
 
 

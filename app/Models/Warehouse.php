@@ -9,7 +9,7 @@ class Warehouse extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'tax', 'profit', 'quantity'];
+    protected $fillable = ['name', 'price', 'tax', 'profit', 'quantity', 'from_erp','store_id', 'sync'];
 
     public function store()
     {

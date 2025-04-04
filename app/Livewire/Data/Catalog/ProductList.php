@@ -44,12 +44,15 @@ class ProductList extends Component
 
         $products = Product::where(function($query) {
             $query->where('sku', 'LIKE', '%' . $this->search . '%')
-
+                ->orWhere('mpn', 'LIKE', '%' . $this->search . '%')
                 ->orWhere('name', 'LIKE', '%' . $this->search . '%')
-                ->orWhere('price', 'LIKE', '%' . $this->search . '%');
+                ->orWhere('price', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('EAN', 'LIKE', '%' . $this->search . '%')
+            ->orWhere('id_prestashop', 'LIKE', '%' . $this->search . '%');
         })
             ->latest()
-            ->paginate(10);
+            ->paginate(5)
+        ;
 
         return view('livewire.data.catalog.product-list',[
             'items' => $products,

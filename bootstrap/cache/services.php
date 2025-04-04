@@ -29,16 +29,17 @@
     25 => 'Laravel\\Pail\\PailServiceProvider',
     26 => 'Laravel\\Sail\\SailServiceProvider',
     27 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    28 => 'LaravelDaily\\LaravelCharts\\LaravelChartsServiceProvider',
-    29 => 'Livewire\\LivewireServiceProvider',
+    28 => 'Livewire\\LivewireServiceProvider',
+    29 => 'Mckenziearts\\Notify\\LaravelNotifyServiceProvider',
     30 => 'Carbon\\Laravel\\ServiceProvider',
     31 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     32 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    33 => 'Pest\\Laravel\\PestServiceProvider',
-    34 => 'Spatie\\Permission\\PermissionServiceProvider',
-    35 => 'App\\Providers\\AppServiceProvider',
-    36 => 'App\\Providers\\CurrentUserServiceProvider',
-    37 => 'App\\Providers\\EventServiceProvider',
+    33 => 'OpenAI\\Laravel\\ServiceProvider',
+    34 => 'Pest\\Laravel\\PestServiceProvider',
+    35 => 'Spatie\\Permission\\PermissionServiceProvider',
+    36 => 'App\\Providers\\AppServiceProvider',
+    37 => 'App\\Providers\\CurrentUserServiceProvider',
+    38 => 'App\\Providers\\EventServiceProvider',
   ),
   'eager' => 
   array (
@@ -54,8 +55,8 @@
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Jantinnerezo\\LivewireAlert\\LivewireAlertServiceProvider',
     11 => 'Laravel\\Pail\\PailServiceProvider',
-    12 => 'LaravelDaily\\LaravelCharts\\LaravelChartsServiceProvider',
-    13 => 'Livewire\\LivewireServiceProvider',
+    12 => 'Livewire\\LivewireServiceProvider',
+    13 => 'Mckenziearts\\Notify\\LaravelNotifyServiceProvider',
     14 => 'Carbon\\Laravel\\ServiceProvider',
     15 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     16 => 'Termwind\\Laravel\\TermwindServiceProvider',
@@ -220,6 +221,9 @@
     'Laravel\\Sail\\Console\\InstallCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'Laravel\\Sail\\Console\\PublishCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'OpenAI\\Client' => 'OpenAI\\Laravel\\ServiceProvider',
+    'OpenAI\\Contracts\\ClientContract' => 'OpenAI\\Laravel\\ServiceProvider',
+    'openai' => 'OpenAI\\Laravel\\ServiceProvider',
   ),
   'when' => 
   array (
@@ -269,6 +273,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'OpenAI\\Laravel\\ServiceProvider' => 
     array (
     ),
   ),

@@ -41,17 +41,15 @@ class SyncProductsBatchDispatcherJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $batch = Bus::batch([])->then(function (Batch $batch) {
-                broadcast(new QueueFinished()); // Εκπομπή του event όταν όλα τα jobs ολοκληρωθούν
-            })->catch(function (Batch $batch, Throwable $e) {
-                Log::error("Batch Failed: " . $e->getMessage());
-            })->dispatch();
+            $batch = Bus::batch([])->dispatch();
+            $allSyncedIds = [];
+            $jobs = [];
 
             // 🔹 Παίρνουμε την τελευταία ημερομηνία συγχρονισμού
 //            $lastSyncDate = Product::max('updated_at') ?? '2000-01-01 00:00:00';
 
-            while ($this->page <= ceil($this->totalProducts / $this->limit)) {
-                $response = Http::get('https://gizmos.gr/laravel-api', [
+            while (count($allSyncedIds) < $this->totalProducts) {
+                $response = Http::get('https://housephone.gr/laravel-api', [
                     'page' => $this->page,
                     'limit' => $this->limit,
                 ]);
@@ -61,10 +59,11 @@ class SyncProductsBatchDispatcherJob implements ShouldQueue
                     break;
                 }
 
-                $batch->add(new ProductJob($products));
-
+                $jobs[] = new ProductJob($products);
                 $this->page++;
-
+            }
+            if (count($jobs) > 0) {
+                $batch = Bus::batch($jobs)->dispatch(); // Dispatch the batch with jobs
             }
         } catch (\Exception $e) {
             Log::error("Error during product sync: " . $e->getMessage());

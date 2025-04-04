@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Dashboard;
 
+use Akaunting\Apexcharts\Chart;
+use App\Charts\ProductTrendsChart;
 use App\Models\Order;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -15,23 +17,14 @@ class Index extends Component
     {
         $today = Carbon::today();
 
-        $chart_options = [
-            'chart_title' => "TEST",
-            'report_type' => 'group_by_date',
-            'model' => 'App\Models\Store',
-            'group_by_field' => 'created_at',
-            'group_by_period' => 'month',
-            'chart_type' => 'bar',
-        ];
-        $chart1 = new LaravelChart($chart_options);
-
+        $chart =1;
 
         return view('livewire.dashboard.index',[
             'totalProducts' => Product::all()->count(),
-            'todayProducts' => Product::whereDate('created_at', $today)->count(),
-            'countEan'      => $this->countDoubleEAN(),
+            'todayProducts' => Product::where('updated_at', '>=', now()->subHour())->count(),
+        'countEan'      => $this->countDoubleEAN(),
             'totalOrders'        => Order::all()->count(),
-            'chart1' => $chart1,
+            'chart' => $chart,
             'todayOrders'   => Order::whereDate('created_at', $today)->count(),
         ]);
     }

@@ -60,6 +60,20 @@ Route::middleware('auth')->group(function () {
         Route::get('erps/create',\App\Livewire\Pylon\Erps\Form::class)->name('erps.create');
         Route::get('erps/{erp}/edit',\App\Livewire\Pylon\Erps\Form::class)->name('erps.edit');
 
+        Route::get('openai/{product}/generate',\App\Livewire\OpenAi\Generate::class)->name('openai.generate');
+
+
+        Route::get('settings/index',\App\Livewire\Settings\Index::class)->name('settings.index');
+
+        Route::get('cashier',App\Livewire\Cashier\Index::class)->name('cashier');
+        Route::get('incomes/categories/index',App\Livewire\Cashier\Incomes\Index::class)->name('incomes.categories.index');
+        Route::get('expenses/categories/index',App\Livewire\Cashier\Expenses\Index::class)->name('expenses.categories.index');
+        Route::get('incomes/categories/create',\App\Livewire\Cashier\Incomes\Form::class)->name('incomes.categories.create');
+        Route::get('expenses/categories/create',\App\Livewire\Cashier\Expenses\Form::class)->name('expenses.categories.create');
+
+        Route::get('expenses/categories/{expense}/edit',\App\Livewire\Cashier\Expenses\Form::class)->name('expenses.categories.edit');
+        Route::get('incomes/categories/{income}/edit',\App\Livewire\Cashier\Incomes\Form::class)->name('incomes.categories.edit');
+
 
     });
 });

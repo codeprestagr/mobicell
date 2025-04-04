@@ -38,13 +38,6 @@
       0 => 'Laravel\\Tinker\\TinkerServiceProvider',
     ),
   ),
-  'laraveldaily/laravel-charts' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'LaravelDaily\\LaravelCharts\\LaravelChartsServiceProvider',
-    ),
-  ),
   'livewire/livewire' => 
   array (
     'aliases' => 
@@ -54,6 +47,17 @@
     'providers' => 
     array (
       0 => 'Livewire\\LivewireServiceProvider',
+    ),
+  ),
+  'mckenziearts/laravel-notify' => 
+  array (
+    'aliases' => 
+    array (
+      'Notify' => 'Mckenziearts\\Notify\\Facades\\LaravelNotify',
+    ),
+    'providers' => 
+    array (
+      0 => 'Mckenziearts\\Notify\\LaravelNotifyServiceProvider',
     ),
   ),
   'nesbot/carbon' => 
@@ -75,6 +79,13 @@
     'providers' => 
     array (
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    ),
+  ),
+  'openai-php/laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'OpenAI\\Laravel\\ServiceProvider',
     ),
   ),
   'pestphp/pest-plugin-laravel' => 

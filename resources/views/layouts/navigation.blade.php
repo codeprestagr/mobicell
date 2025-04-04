@@ -176,7 +176,7 @@
 'guarantees.warehouse.index','guarantees.warehouse.create','guarantees.warehouse.edit'))
                             active @endif">
                         <i
-                            class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Apps</i>
+                            class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Warehouse</i>
                         <span class="menu-text"> {{ __('Guarantees') }} </span>
                         <span
                             class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></span>
@@ -200,6 +200,71 @@
                                                          :active="request()->routeIs('guarantees.index')">
                                             <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
                                             <span class="menu-text">{{ __('Guarantees') }}</span>
+                                        </x-dropdown-link>
+                                    </li>
+                                @endif
+                        </ul>
+                    </div>
+                </li>
+            @endif
+
+            @if($user->isSuperAdmin() || $user->can('settings.index'))
+                <li class="menu-item">
+                    <x-nav-link
+                        :href="route('settings.index')" :active="request()->routeIs('settings.index')">
+                        <i class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Settings</i>
+                        {{ __('Settings') }}
+                    </x-nav-link>
+                </li>
+            @endif
+
+
+
+
+            @if($user->isSuperAdmin() || $user->can('cashier'))
+                <li class="hs-accordion menu-item">
+                    <a href="javascript:void(0)"
+                       class="hs-accordion-toggle group flex items-center gap-x-3.5 rounded-e-full px-4 py-2 text-sm font-medium
+                                text-default-700 transition-all hover:bg-default-100 hs-accordion-active:bg-default-100
+                            @if(request()->routeIs( 'cashier', 'incomes.categories.index',
+'expenses.categories.create', 'incomes.categories.create',
+'expenses.categories.index'))
+                            active @endif">
+                        <i
+                            class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Payments</i>
+                        <span class="menu-text">  {{ __('Cashier') }} </span>
+                        <span
+                            class="ti ti-chevron-right ms-auto text-sm transition-all hs-accordion-active:rotate-90"></span>
+                    </a>
+
+                    <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300">
+                        <ul class="mt-2 space-y-2">
+                            @if($user->isSuperAdmin() || $user->can('incomes.categories.index'))
+                                <li class="menu-item">
+                                    <x-dropdown-link :href="route('incomes.categories.index')"
+                                                     :active="request()->routeIs('incomes.categories.index')">
+                                        <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                                        <span class="menu-text">{{ __('Categories Incomes') }}</span>
+                                    </x-dropdown-link>
+                                </li>
+                            @endif
+
+                                @if($user->isSuperAdmin() || $user->can('expenses.categories.index'))
+                                    <li class="menu-item">
+                                        <x-dropdown-link :href="route('expenses.categories.index')"
+                                                         :active="request()->routeIs('expenses.categories.index')">
+                                            <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                                            <span class="menu-text">{{ __('Categories Expenses') }}</span>
+                                        </x-dropdown-link>
+                                    </li>
+                                @endif
+
+                                @if($user->isSuperAdmin() || $user->can('cashier'))
+                                    <li class="menu-item">
+                                        <x-dropdown-link :href="route('cashier')"
+                                                         :active="request()->routeIs('cashier')">
+                                            <i class="ti ti-circle-filled scale-[.25] text-lg"></i>
+                                            <span class="menu-text">{{ __('Cashier') }}</span>
                                         </x-dropdown-link>
                                     </li>
                                 @endif

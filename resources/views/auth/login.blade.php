@@ -56,13 +56,13 @@
                 </x-primary-button-auth>
 
             </div>
-            <div class="flex justify-center items-center mt-8">
-                <p class="mt-2 text-base text-gray-600">
-                    {{__('Dont have an account ?')}}
-                    <a href="{{route('register')}}" title=""  class="font-medium text-sky-600 transition-all duration-200
-                        hover:text-sky-700 focus:text-sky-700 hover:underline">{{ __('Sign up') }}</a>
-                </p>
-            </div>
-        </div>
-    </form>
+{{-- <div class="flex justify-center items-center mt-8">
+      <p class="mt-2 text-base text-gray-600">
+          {{__('Dont have an account ?')}}
+          <a href="{{route('register')}}" title=""  class="font-medium text-sky-600 transition-all duration-200
+              hover:text-sky-700 focus:text-sky-700 hover:underline">{{ __('Sign up') }}</a>
+      </p>
+  </div>--}}
+</div>
+</form>
 </x-guest-layout>

@@ -9,11 +9,12 @@
                 </div> <!-- flex justify-start items-center gap-2-->
             </h4><!-- text-slate-900 text-lg font-medium mb-2-->
         </div><!-- DIV -->
-
+        @if($user->isSuperAdmin() || $user->can('guarantees.create'))
         <div>
             @include('livewire._partials.button_create',[
                 'text' => __('Add new'), 'url'=> route('guarantees.create')])
         </div>
+        @endif
     </div> <!-- flex items-center justify-between flex-wrap gap-2 mb-6-->
 
 

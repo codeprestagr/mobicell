@@ -19,6 +19,9 @@ return new class extends Migration
             $table->text('profit')->default('0');
             $table->integer('quantity')->default(0);
             $table->foreignId('store_id')->nullable()->constrained('stores')->nullOnDelete();
+            $table->boolean('from_erp')->default(false);
+            $table->boolean('sync')->default(false);
+            $table->decimal('price_rounded',10,2)->nullable()->default(0);
             $table->timestamps();
         });
     }

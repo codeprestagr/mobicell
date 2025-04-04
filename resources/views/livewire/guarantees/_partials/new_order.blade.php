@@ -58,16 +58,20 @@
                             <x-text-input wire:model="imei" id="imei" placeholder="{{__('imei')}}" type="text" class="mt-1 block w-full" />
                         </div>
                     </div>
-                @endif
 
 
 
+                <div class="grid lg:grid-cols-2 gap-6 mt-5">
 
             <!-- Κουμπί Προσθήκης -->
-            <a href="javascript:void(0);" wire:click="addProductToList" class="text-blue-500 cursor-pointer">
-                ➕ Προσθήκη στην λίστα
+            <a href="javascript:void(0);" wire:click="addProductToList" class="btn rounded-full  bg-primary text-white gap-3">
+
+                <i class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">Add</i>
+                    {{ __('Add to list') }}
             </a>
 
+                </div>
+                @endif
 
 
 

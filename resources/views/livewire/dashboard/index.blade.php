@@ -54,16 +54,10 @@
 
 
     </div>
-    <div wire:loading>
-        <p>Loading chart...</p>
-    </div>
 
-    {!! $chart1->renderHtml() !!}
+
+
+
 
 </div>
-<!-- end row -->
-@push('scripts')
 
-    {!! $chart1->renderChartJsLibrary() !!}
-    {!! $chart1->renderJs() !!}
-@endpush

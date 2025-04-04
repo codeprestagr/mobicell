@@ -13,10 +13,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-
         <!-- Scripts -->
         @vite(['resources/css/new/app.css','resources/css/new/icons.css'])
         @livewireStyles
+
     </head>
     <body>
     <div class="flex wrapper">
@@ -113,21 +113,19 @@
             </footer>
         </div>
     </div>
+
+
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @vite(['resources/js/new/jquery.min.js', 'resources/js/new/preline.js', 'resources/js/new/simplebar.min.js',
-'resources/js/new/iconify-icon.min.js','resources/js/new/waves.min.js', 'resources/js/new/app.js'])
+'resources/js/new/iconify-icon.min.js', 'resources/js/new/quill.min.js' ,'resources/js/new/form-editor.js', 'resources/js/app.js'])
     @livewireScripts
 
 
-    <script>
-        window.Echo.channel('sync-channel')
-            .listen('.queue-finished', () => {
-                Livewire.emit('queue-finished');
-            });
-    </script>
-
     @stack('scripts')
+
+
+
 
 
     </body>

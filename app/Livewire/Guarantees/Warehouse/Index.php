@@ -4,17 +4,31 @@ namespace App\Livewire\Guarantees\Warehouse;
 
 use App\Models\Customer;
 use App\Models\Warehouse;
+use App\Services\OpenAIBillingService;
 use Jantinnerezo\LivewireAlert\Facades\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
+
+
 class Index extends Component
 {
 
     protected $updatesQueryString = ['search'];
+
     public $search;
+    public $source=null;
+
+    public bool $loading = false;
     use WithPagination, WithoutUrlPagination;
+
+
+
+    public function updatedSource()
+    {
+        $this->resetPage(); // Reset pagination when filter changes
+    }
 
     public function updatedSearch()
     {
@@ -22,15 +36,21 @@ class Index extends Component
     }
     public function render()
     {
+
         $user = auth()->user();
 
         $warehouses = Warehouse::query()
             ->when($user->store_id, function ($query) use ($user) { // Αν ο χρήστης έχει store_id, φιλτράρουμε
                 $query->where('warehouses.store_id', $user->store_id);
-            })
-            ->where(function ($query) {
-                $query->where('warehouses.name', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('warehouses.tax', 'LIKE', '%' . $this->search . '%');
+            })->when($this->source, function ($query) {
+                $query->where('from_erp', $this->source);
+            })->when(!empty($this->search), function ($query) {
+                $query->where(function ($query) {
+                    $query->where('warehouses.name', 'LIKE', '%' . $this->search . '%')
+                        ->orWhere('warehouses.tax', 'LIKE', '%' . $this->search . '%')
+                        ->orWhere('warehouses.price', 'LIKE', '%' . $this->search . '%')
+                        ->orWhere('warehouses.profit', 'LIKE', '%' . $this->search . '%');
+                });
             })
             ->latest()
             ->paginate(10);
@@ -66,5 +86,18 @@ class Index extends Component
             ->success()
             ->timer(2000) // Dismisses after 3 seconds
             ->show();
+    }
+
+
+    public function sync($id, $sync)
+    {
+
+        $Warehouse = Warehouse::findOrFail($id);
+        $Warehouse->sync = $sync;
+        $Warehouse->save();
+
+        session()->flash('success', __('Data updated successfully!'));
+
+         return redirect()->route('guarantees.warehouse.index'); // Αλλαξε το με το δικό σου route name
     }
 }

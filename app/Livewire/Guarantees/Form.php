@@ -51,7 +51,7 @@ class Form extends Component
 
 public  function updatedSearch()
 {
-    $this->products = Product::where('name', 'like', '%' . $this->search . '%')->get();
+    $this->products = Product::where('ean', 'like', '%' . $this->search . '%')->get();
 }
 
     public function updatedSelectedProductId()

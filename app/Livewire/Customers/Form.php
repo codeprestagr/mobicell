@@ -74,15 +74,15 @@ class Form extends Component
         $this->validate();
 
         $fields = [
-           'firstname' => $this->firstname,
-            'lastname'  => $this->lastname,
-            'email'     => $this->email,
-            'phone'     => $this->phone,
-            'address'   => $this->address,
-            'city'      => $this->city,
-            'postcode'   => $this->postcode,
-            'store_id'   => ($this->store_id) ? $this->store_id : null,
-            'user_id'    => (!$this->isEdit) ? auth()->user()->id : $this->user_id,
+           'firstname'      => $this->firstname,
+            'lastname'      => $this->lastname,
+            'email'         => $this->email,
+            'phone'         => $this->phone,
+            'address'       => $this->address,
+            'city'          => $this->city,
+            'postcode'      => $this->postcode,
+            'store_id'      => ($this->store_id) ? $this->store_id : null,
+            'user_id'       => (!$this->isEdit) ? auth()->user()->id : $this->user_id,
         ];
 
 
@@ -93,6 +93,7 @@ class Form extends Component
         } else {
             $customer = Customer::create($fields);
         }
+
         $this->id = $customer->id;
         if (!$this->isEdit) {
             $this->reset();

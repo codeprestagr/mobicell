@@ -24,6 +24,14 @@
                                 {{ __('Profit') }}
                             </th>
 
+                            <th scope="col" class="px-2 py-2 text-start text-sm text-gray-500">
+                                {{ __('Source') }}
+                            </th>
+
+                            <th scope="col" class="px-2 py-2 text-start text-sm text-gray-500">
+                                {{ __('Do Sync') }}
+                            </th>
+
 
                             <th scope="col" class="px-2 py-2 text-end text-sm text-gray-500">
                                 {{ __('Actions') }}</th>
@@ -57,16 +65,71 @@
                             </td>
 
                             <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-800">
+                                {{$item->profit}}
+                            </td>
 
-                                <div>
-                                    <x-text-input wire:model="profit" type="text" id="profit" placeholder="{{__('Profit')}}" value="{{$item->profit}}"
-                                                  type="text" class="" />
-                                    <x-input-error class="text-red-500 text-xs font-medium" :messages="$errors->get('profit')" />
+                            <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-800">
+                                @if($item->from_erp)
+                                    <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                    <span class="w-1.5 h-1.5 inline-block bg-purple-400 rounded-full"></span>
+                                    {{ __('From ERP') }}
+                                </span>
+                                @else
+                                    <span class="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                                    <span class="w-1.5 h-1.5 inline-block bg-gray-400 rounded-full"></span>
+                                    {{ __('Manual') }}
+                                </span>
+                                @endif
+                            </td>
+                            <td class="px-2 py-2 whitespace-nowrap text-sm text-gray-800">
+                            @if($item->from_erp)
 
-                                </div><!-- div-->
+                                <div class="flex items-center">
+                                    <input type="checkbox" class="form-switch text-primary"
+                                           wire:click="sync({{$item->id}}, {{ $item->sync ? 'false' : 'true' }})"
+                                           @if ($item->sync) checked @endif
+                                    >
+
+                                </div>
+                                @else
+                                -
+                            @endif
                             </td>
 
                             <td class="px-2 py-2 whitespace-nowrap text-end text-sm font-medium flex justify-end gap-3">
+
+                                @if($user->isSuperAdmin() || $user->can('guarantees.warehouse.delete'))
+                                    @if(!$item->from_erp)
+
+
+                                    <div class="hs-tooltip">
+                                        <button  wire:loading.attr="disabled" wire:click="delete({{$item->id}})" class="h-8 w-8 rounded-full bg-gray-200 flex justify-center items-center" data-fc-placement="bottom">
+                                            <i class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">delete</i>
+                                        </button>
+                                        <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm" role="tooltip">
+                                                    {{ __('Delete') }}
+                                                </span>
+                                    </div>
+                                    @endif
+                                @endif
+
+                                @if($user->isSuperAdmin() || $user->can('guarantees.warehouse.edit'))
+                                    @if(!$item->sync)
+
+
+
+                                    <div class="hs-tooltip">
+                                        <a href="{{ route('guarantees.warehouse.edit', $item) }}" data-fc-placement="bottom" class=" h-8 w-8 rounded-full bg-gray-200 flex justify-center items-center" >
+                                            <i class="material-symbols-rounded font-light text-2xl transition-all group-hover:fill-1">edit</i>
+                                        </a>
+                                        <span class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm"
+                                              role="tooltip">
+                                                    {{ __('Edit') }}
+                                                </span>
+                                    </div>
+                                        @endif
+                                @endif
+
 
 
 

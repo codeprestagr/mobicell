@@ -21,6 +21,9 @@ class Index extends Component
         $this->resetPage(); // Επαναφέρει το pagination στην πρώτη σελίδα κάθε φορά που αλλάζει η αναζήτηση
     }
 
+
+
+
     public function render()
     {
 

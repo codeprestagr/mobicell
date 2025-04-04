@@ -40,21 +40,24 @@
     <div class="card overflow-hidden p-6">
 
 
+
         @if($count)
             <div class="flex mb-5">
                 @include('livewire._partials.search')
             </div>
         @endif
 
-            @if(count($items))
-                @include('livewire.data.catalog._partials.product-data')
+        @if($items->count())
+
+        @include('livewire.data.catalog._partials.product-data')
             @else
                 @include('livewire._partials.nodata' ,['url' => ''])
             @endif
 
 
-            @if(count($items))
-                <div class="mt-5 bg-white">
+        @if($items->count())
+
+        <div class="mt-5 bg-white">
                     {{$items->links()}}
                 </div>
             @endif
