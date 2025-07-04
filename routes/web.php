@@ -1,4 +1,4 @@
-<?php
+npm<?php
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -12,14 +12,20 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', App\Livewire\Dashboard\Index::class)->name('dashboard');
     Route::middleware(['dynamic.permission'])->group(function () {
+
+
+        /******************** PROFIL **************************************************************/
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        /******************** END PROFI **********************************************************/
 
+
+        /******************** STORES ******************************************************************/
         Route::get('stores/index', \App\Livewire\Stores\Index::class)->name('stores.index');
         Route::get('stores/create', \App\Livewire\Stores\Form::class)->name('stores.create');
         Route::get('stores/{store}/edit', \App\Livewire\Stores\Form::class)->name('stores.edit');
-
+        /******************** END STORES **************************************************************/
 
         Route::get('roles/index',\App\Livewire\Team\Roles\Index::class)->name('roles.index');
         Route::get('roles/create',\App\Livewire\Team\Roles\Form::class)->name('roles.create');

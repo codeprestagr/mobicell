@@ -29,26 +29,24 @@ class Form extends Component
     public function mount($warehouse=null)
     {
         if ($warehouse) {
-            $warehouse                = Warehouse::findOrFail($warehouse);
+            $warehouse              = Warehouse::findOrFail($warehouse);
 
-                if ($warehouse->from_erp){
-                    if ($warehouse->sync){
+                if ($warehouse->from_erp) {
+                    if ($warehouse->sync)
+                    {
                         return redirect()->route('guarantees.warehouse.index');
                     }
 
-                    $this->disable = true;
+                    $this->disable  = true;
                 }
-
-                $this->name = $warehouse->name;
-                $this->price = $warehouse->price;
-                $this->profit = $warehouse->profit;
-                $this->quantity = $warehouse->quantity;
-                $this->isEdit            = true;
-                $this->store_id          = $warehouse->store_id;
-                $this->id                = $warehouse->id;
-
-
-
+            //70785
+                $this->name         = $warehouse->name;
+                $this->price        = $warehouse->price;
+                $this->profit       = $warehouse->profit;
+                $this->quantity     = $warehouse->quantity;
+                $this->isEdit       = true;
+                $this->store_id     = $warehouse->store_id;
+                $this->id           = $warehouse->id;
         }
     }
     public function render()

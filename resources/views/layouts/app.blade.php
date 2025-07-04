@@ -94,7 +94,7 @@
                 @isset($header)
 
                     {{ $header }}
-
+-
                 @endisset
                 {{ $slot }}
             </main>
